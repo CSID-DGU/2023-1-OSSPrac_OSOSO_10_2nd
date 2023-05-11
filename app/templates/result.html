@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>result page</title>
+    <script>
+
+        function deleteRow() {
+            var table = document.querySelector('tbody');
+            var checkboxes = table.querySelectorAll('input[type="checkbox"]:checked');
+
+            checkboxes.forEach(function(checkbox) {
+                var row = checkbox.parentNode.parentNode;
+                row.parentNode.removeChild(row);
+            });
+
+        }
+  
+        function goHome() {
+        const tableBody = document.querySelector('tbody');
+        tableBody.innerHTML = '';
+        window.location.href = 'main.html';
+        result_list = []
+      }
+
+    </script>
+    <style>
+        a {
+            text-decoration-line: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="myForm" method="POST">
+        <table id="myTable" border='1'>
+            <thead>
+                {% for key in result_list[0].keys() %}
+                <tc>
+                    <th>{{ key }}</th>
+                </tc>
+                {% endfor %}
+                <td></td>
+            </thead>
+            <tbody>
+                {% for result in result_list %}
+                <tr>
+                    {% for value in result.values() %}
+                    <tc>
+                        <td>{{ value }}</td>
+                    </tc>
+                    {% endfor %}
+                    <td><input type="checkbox"></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <input type="button" value="DeleteRow"  onclick="deleteRow()">
+        <button type='submit' name='Add row' formaction='/add_row' value='Add row'>Add row</button>
+        <br><button type='Home' formaction='/home' name='Home' value='Home' onclick="goHome()">Home</button></br>
+    </form>
+</body>
+
+</html>
