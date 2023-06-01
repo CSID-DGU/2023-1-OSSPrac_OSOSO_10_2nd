@@ -1,7 +1,7 @@
 version : "3.0"
 services:
   python-app: # 서비스명
-    image : hyonning/ososo
+    image : ${DOCKER_USR}/ososo
     build : ./main
     ports:
       - "80:80"
