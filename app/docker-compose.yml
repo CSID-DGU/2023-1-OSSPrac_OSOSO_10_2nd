@@ -1,7 +1,5 @@
-version: '3.0'
-
+version : "3.0"
 services:
-  python-app:
-    build: ./main
-    ports:
-      - "80:80"
+  python-app: # 서비스명
+    image : hyonning/ososo
+    build : .
