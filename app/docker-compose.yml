@@ -2,6 +2,6 @@ version : "3.0"
 services:
   python-app: # 서비스명
     image : ${DOCKER_USR}/ososo
-    build : ./main
+    build : .
     ports:
       - "80:80"
